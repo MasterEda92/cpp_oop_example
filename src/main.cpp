@@ -1,7 +1,16 @@
+#include "CommandHandler.h"
 #include <iostream>
 
 int main() {
-  std::cout << "Hello App!" << std::endl;
+  CCommandHandler aHandler;
 
+  std::cout << "Willkommen zum Kontaktplaner :)" << std::endl
+            << "Folende Aktionen können durchgeführt werden:" << std::endl;
+  aHandler.ListCommands();
+
+  bool bContinue = false;
+  do {
+    bContinue = aHandler.Handle();
+  } while (bContinue);
   return 0;
 }
