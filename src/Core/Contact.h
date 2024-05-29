@@ -9,16 +9,16 @@ public:
 
   CContact(std::string strCsv);
 
-  std::string GetFirstName() { return m_strFirstName; }
+  std::string GetFirstName() const { return m_strFirstName; }
   void SetFirstName(std::string strFirstName) { m_strFirstName = strFirstName; }
 
-  std::string GetLastName() { return m_strLastName; }
+  std::string GetLastName() const { return m_strLastName; }
   void SetLastName(std::string strLastName) { m_strLastName = strLastName; }
 
-  int GetAge() { return m_nAge; }
+  int GetAge() const { return m_nAge; }
   void SetAge(int nAge) { m_nAge = nAge; }
 
-  std::string ToCsv();
+  std::string ToCsv() const;
 
 private:
   std::string m_strFirstName;

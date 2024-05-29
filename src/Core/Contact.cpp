@@ -28,7 +28,7 @@ CContact::CContact(std::string strCsv) {
   m_nAge = std::stoi(nAge);
 }
 
-std::string CContact::ToCsv() {
+std::string CContact::ToCsv() const {
   std::ostringstream oss;
   oss << m_strFirstName << ";" << m_strLastName << ";"
       << m_nAge; // << ";" << pContact->phone_nr;
