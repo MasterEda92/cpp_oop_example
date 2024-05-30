@@ -13,7 +13,7 @@ const CContact &CMemoryContactRepository::GetById(int nId) {
 
 void CMemoryContactRepository::Create(const CContact &newItem) {
   m_vecData.push_back(CContact(newItem.GetFirstName(), newItem.GetLastName(),
-                               newItem.GetAge()));
+                               newItem.GetAge(), newItem.GetPhoneNr()));
 }
 
 void CMemoryContactRepository::Delete(int nID) {
@@ -24,4 +24,5 @@ void CMemoryContactRepository::Update(int nID, const CContact &updatedItem) {
   item.SetFirstName(updatedItem.GetFirstName());
   item.SetLastName(updatedItem.GetLastName());
   item.SetAge(updatedItem.GetAge());
+  item.SetPhoneNr(updatedItem.GetPhoneNr());
 }
