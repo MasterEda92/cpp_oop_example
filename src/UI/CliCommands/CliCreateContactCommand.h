@@ -17,6 +17,7 @@ private:
   std::string GetFirstNameFromInput();
   std::string GetLastNameFromInput();
   int GetAgeFromInput();
+  std::string GetPhoneNrFromInput();
 
 private:
   std::shared_ptr<IContactService> m_pContactService;

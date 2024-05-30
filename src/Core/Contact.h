@@ -3,9 +3,10 @@
 
 class CContact {
 public:
-  CContact(std::string strFirstName, std::string strLastName, int nAge)
-      : m_strFirstName(strFirstName), m_strLastName(strLastName), m_nAge(nAge) {
-  }
+  CContact(std::string strFirstName, std::string strLastName, int nAge,
+           std::string strPhoneNr)
+      : m_strFirstName(strFirstName), m_strLastName(strLastName), m_nAge(nAge),
+        m_strPhoneNr(strPhoneNr) {}
 
   std::string GetFirstName() const { return m_strFirstName; }
   void SetFirstName(std::string strFirstName) { m_strFirstName = strFirstName; }
@@ -16,8 +17,12 @@ public:
   int GetAge() const { return m_nAge; }
   void SetAge(int nAge) { m_nAge = nAge; }
 
+  std::string GetPhoneNr() const { return m_strPhoneNr; }
+  void SetPhoneNr(std::string strPhoneNr) { m_strPhoneNr = strPhoneNr; }
+
 private:
   std::string m_strFirstName;
   std::string m_strLastName;
   int m_nAge;
+  std::string m_strPhoneNr;
 };

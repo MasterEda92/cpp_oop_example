@@ -7,8 +7,8 @@ void CCliListContactsCommand::List() {
     std::cout << "Nr. " << nNr << "; ";
     std::cout << "Vorname: " << it.GetFirstName() << "; ";
     std::cout << "Nachname: " << it.GetLastName() << "; ";
-    std::cout << "Alter: " << it.GetAge() << std::endl;
-    //    std::cout << "Telefonnummer: " << it->phone_nr << std::endl;
+    std::cout << "Alter: " << it.GetAge() << "; ";
+    std::cout << "Telefonnummer: " << it.GetPhoneNr() << std::endl;
     ++nNr;
   }
   if (vecContacts.size() == 0)

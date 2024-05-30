@@ -4,8 +4,9 @@ void CCliCreateContactCommand::Create() {
   std::string strFirstName = GetFirstNameFromInput();
   std::string strLastName = GetLastNameFromInput();
   int nAge = GetAgeFromInput();
+  std::string strPhoneNr = GetPhoneNrFromInput();
 
-  auto pContact = CContact(strFirstName, strLastName, nAge);
+  auto pContact = CContact(strFirstName, strLastName, nAge, strPhoneNr);
   m_pContactService->CreateContact(pContact);
   std::cout << "Der Kontakt wurde neu angelegt." << std::endl;
 }
@@ -30,4 +31,11 @@ int CCliCreateContactCommand::GetAgeFromInput() {
   std::getline(std::cin, strAge);
   int nAge = std::stoi(strAge);
   return nAge;
+}
+
+std::string CCliCreateContactCommand::GetPhoneNrFromInput() {
+  std::cout << "Bitte geben Sie den Telefonnummer ein:";
+  std::string strPhoneNr;
+  std::getline(std::cin, strPhoneNr);
+  return strPhoneNr;
 }

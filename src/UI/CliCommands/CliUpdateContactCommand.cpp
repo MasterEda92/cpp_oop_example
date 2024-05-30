@@ -21,8 +21,8 @@ void CCliUpdateContactCommand::Update() {
     return;
   }
 
-  auto updatedContact =
-      CContact(contact.GetFirstName(), contact.GetLastName(), contact.GetAge());
+  auto updatedContact = CContact(contact.GetFirstName(), contact.GetLastName(),
+                                 contact.GetAge(), contact.GetPhoneNr());
 
   std::string strNewValue = GetNewFieldValue();
 
@@ -39,10 +39,10 @@ void CCliUpdateContactCommand::Update() {
     updatedContact.SetAge(std::stoi(strNewValue));
     break;
   }
-    //  case 4: {
-    //      m_vecContacts.at(nNrToEdit - 1)->SetLastName(strNewValue);
-    //    break;
-    //  }
+  case 4: {
+    updatedContact.SetPhoneNr(strNewValue);
+    break;
+  }
   }
 
   m_pContactService->UpdateContact(nNrToEdit, updatedContact);
@@ -58,7 +58,7 @@ int CCliUpdateContactCommand::GetFieldIndex() {
   std::cout << "1 - Vorname" << std::endl;
   std::cout << "2 - Nachname" << std::endl;
   std::cout << "3 - Alter" << std::endl;
-  // std::cout << "4 - Telefonnummer" << std::endl;
+  std::cout << "4 - Telefonnummer" << std::endl;
 
   int nFeldId = -1;
   do {
@@ -68,11 +68,11 @@ int CCliUpdateContactCommand::GetFieldIndex() {
     if (nFeldId < 1)
       return -1;
 
-    if (nFeldId > 3)
+    if (nFeldId > 4)
       std::cout << "Das eingegebene Feld ist ungültig. Bitte geben Sie eine "
                    "korrekte Nummer ein."
                 << std::endl;
-  } while (nFeldId < 1 && nFeldId > 3);
+  } while (nFeldId < 1 && nFeldId > 4);
 
   return nFeldId;
 }

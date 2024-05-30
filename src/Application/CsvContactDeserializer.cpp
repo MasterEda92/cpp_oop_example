@@ -5,7 +5,7 @@ CContact CCsvContactDeserializer::Deserialize(const std::string &data) {
   std::istringstream ss(data);
   std::string token;
 
-  std::string strFirstName, strLastName, nAge;
+  std::string strFirstName, strLastName, nAge, strPhoneNr;
   int nCounter = 0;
   while (std::getline(ss, token, ';')) {
     switch (nCounter) {
@@ -18,10 +18,13 @@ CContact CCsvContactDeserializer::Deserialize(const std::string &data) {
     case 2:
       nAge = token;
       break;
+    case 3:
+      strPhoneNr = token;
+      break;
     default:
       break;
     }
     ++nCounter;
   }
-  return CContact(strFirstName, strLastName, std::stoi(nAge));
+  return CContact(strFirstName, strLastName, std::stoi(nAge), strPhoneNr);
 }
