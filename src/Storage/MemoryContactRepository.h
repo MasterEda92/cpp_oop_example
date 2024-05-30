@@ -7,7 +7,7 @@ public:
   CMemoryContactRepository();
 
   virtual std::vector<CContact> GetAll() override;
-  virtual CContact GetById(int nId) override;
+  virtual const CContact &GetById(int nId) override;
   virtual void Create(const CContact &newItem) override;
   virtual void Delete(int nID) override;
   virtual void Update(int nID, const CContact &updatedItem) override;

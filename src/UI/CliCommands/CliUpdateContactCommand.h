@@ -14,6 +14,9 @@ public:
 private:
   void Update();
 
+  int GetFieldIndex();
+  std::string GetNewFieldValue();
+
 private:
   std::shared_ptr<IContactService> m_pContactService;
 };

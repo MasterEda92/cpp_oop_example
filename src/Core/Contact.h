@@ -7,8 +7,6 @@ public:
       : m_strFirstName(strFirstName), m_strLastName(strLastName), m_nAge(nAge) {
   }
 
-  CContact(std::string strCsv);
-
   std::string GetFirstName() const { return m_strFirstName; }
   void SetFirstName(std::string strFirstName) { m_strFirstName = strFirstName; }
 
@@ -17,8 +15,6 @@ public:
 
   int GetAge() const { return m_nAge; }
   void SetAge(int nAge) { m_nAge = nAge; }
-
-  std::string ToCsv() const;
 
 private:
   std::string m_strFirstName;

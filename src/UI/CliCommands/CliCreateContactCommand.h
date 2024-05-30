@@ -14,6 +14,10 @@ public:
 private:
   void Create();
 
+  std::string GetFirstNameFromInput();
+  std::string GetLastNameFromInput();
+  int GetAgeFromInput();
+
 private:
   std::shared_ptr<IContactService> m_pContactService;
 };
