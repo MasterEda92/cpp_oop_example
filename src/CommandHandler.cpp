@@ -66,8 +66,8 @@ void CCommandHandler::List() {
     std::cout << "Nr. " << nNr << "; ";
     std::cout << "Vorname: " << it->GetFirstName() << "; ";
     std::cout << "Nachname: " << it->GetLastName() << "; ";
-    std::cout << "Alter: " << it->GetAge() << std::endl;
-    //    std::cout << "Telefonnummer: " << it->phone_nr << std::endl;
+    std::cout << "Alter: " << it->GetAge() << "; ";
+    std::cout << "Telefonnummer: " << it->GetPhoneNr() << std::endl;
     ++nNr;
   }
   if (m_vecContacts.size() == 0)
@@ -78,8 +78,10 @@ void CCommandHandler::Create() {
   std::string strFirstName = FirstNameFromInput();
   std::string strLastName = LastNameFromInput();
   int nAge = AgeFromInput();
+  std::string strPhoneNr = PhoneNrFromInput();
 
-  auto pContact = std::make_shared<CContact>(strFirstName, strLastName, nAge);
+  auto pContact =
+      std::make_shared<CContact>(strFirstName, strLastName, nAge, strPhoneNr);
 
   m_vecContacts.push_back(pContact);
   std::cout << "Der Kontakt wurde neu angelegt." << std::endl;
@@ -116,10 +118,10 @@ void CCommandHandler::Edit() {
     m_vecContacts.at(nNrToEdit - 1)->SetAge(std::stoi(strNewValue));
     break;
   }
-    //  case 4: {
-    //      m_vecContacts.at(nNrToEdit - 1)->SetLastName(strNewValue);
-    //    break;
-    //  }
+  case 4: {
+    m_vecContacts.at(nNrToEdit - 1)->SetPhoneNr(strNewValue);
+    break;
+  }
   }
   std::cout << "Der Kontakt mit der Nummer " << nNrToEdit << " wurde geändert."
             << std::endl;
@@ -202,6 +204,12 @@ int CCommandHandler::AgeFromInput() {
   return nAge;
 }
 
+std::string CCommandHandler::PhoneNrFromInput() {
+  std::cout << "Bitte geben Sie den Telefonnummer ein:";
+  std::string strPhoneNr;
+  std::getline(std::cin, strPhoneNr);
+  return strPhoneNr;
+}
 int CCommandHandler::GetContactIndex() {
   int nNrToDelete = -1;
 
@@ -229,7 +237,7 @@ int CCommandHandler::GetFieldIndex() {
   std::cout << "1 - Vorname" << std::endl;
   std::cout << "2 - Nachname" << std::endl;
   std::cout << "3 - Alter" << std::endl;
-  // std::cout << "4 - Telefonnummer" << std::endl;
+  std::cout << "4 - Telefonnummer" << std::endl;
 
   int nFeldId = -1;
   do {
@@ -239,11 +247,11 @@ int CCommandHandler::GetFieldIndex() {
     if (nFeldId < 1)
       return -1;
 
-    if (nFeldId > 3)
+    if (nFeldId > 4)
       std::cout << "Das eingegebene Feld ist ungültig. Bitte geben Sie eine "
                    "korrekte Nummer ein."
                 << std::endl;
-  } while (nFeldId < 1 && nFeldId > 3);
+  } while (nFeldId < 1 && nFeldId > 4);
 
   return nFeldId;
 }

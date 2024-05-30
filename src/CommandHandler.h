@@ -22,6 +22,7 @@ private:
   std::string FirstNameFromInput();
   std::string LastNameFromInput();
   int AgeFromInput();
+  std::string PhoneNrFromInput();
 
   int GetContactIndex();
   int GetFieldIndex();
