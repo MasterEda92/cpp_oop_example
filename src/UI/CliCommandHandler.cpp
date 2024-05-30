@@ -1,10 +1,12 @@
 #include "CliCommandHandler.h"
+#include "CliCommand.h"
 #include <iostream>
 
 CCliCommandHandler::CCliCommandHandler(std::string strWelcomeMsg)
     : m_strWelcomeMsg(strWelcomeMsg) {}
 
 void CCliCommandHandler::AddCommand(std::shared_ptr<CCliCommand> pCommand) {
+  pCommand->SetCommandHandler(this);
   m_mapCommands.insert_or_assign(pCommand->GetCommand(), pCommand);
 }
 void CCliCommandHandler::ListCommands() const {
@@ -23,6 +25,11 @@ void CCliCommandHandler::RunCli() const {
   do {
     bContinue = HandleCommand();
   } while (bContinue);
+}
+
+void CCliCommandHandler::InvokeCommand(std::string strCommand) {
+  auto it = m_mapCommands.find(strCommand);
+  it->second->Run();
 }
 
 bool CCliCommandHandler::HandleCommand() const {

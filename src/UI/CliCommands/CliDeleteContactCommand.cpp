@@ -5,9 +5,9 @@ void CCliDeleteContactCommand::Delete() {
   std::cout << "Geben Sie die Nummer des Kontakts ein, der gelöscht werden "
                "soll. (-1 für Abbrechen)"
             << std::endl;
-  // TODO: Das hier einbauen, wenn man das ganze Konstrukt auf einen
-  //  allgemeinen Command-Handler umbaut.
-  //  List();
+
+  if (m_pHandler)
+    m_pHandler->InvokeCommand("l");
 
   auto contacts = m_pContactService->GetContacts();
   int nNrToDelete = CCliCommandHelpers::GetContactIndex(contacts.size());

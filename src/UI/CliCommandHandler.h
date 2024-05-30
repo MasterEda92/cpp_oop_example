@@ -1,14 +1,15 @@
 #pragma once
-#include "CliCommand.h"
 #include <map>
 #include <memory>
 
+class CCliCommand;
 class CCliCommandHandler {
 public:
   CCliCommandHandler(std::string strWelcomeMsg);
   void AddCommand(std::shared_ptr<CCliCommand> pCommand);
   void ListCommands() const;
   void RunCli() const;
+  void InvokeCommand(std::string strCommand);
 
 protected:
   bool HandleCommand() const;

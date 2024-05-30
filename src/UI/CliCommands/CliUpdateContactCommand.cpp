@@ -6,9 +6,8 @@ void CCliUpdateContactCommand::Update() {
                "soll. (-1 für Abbrechen)"
             << std::endl;
 
-  // TODO: Das hier einbauen, wenn das ganze auf einen allgemeinen
-  // Command-Handler umgestellt wird.
-  // List();
+  if (m_pHandler)
+    m_pHandler->InvokeCommand("l");
 
   auto contacts = m_pContactService->GetContacts();
   int nNrToEdit = CCliCommandHelpers::GetContactIndex(contacts.size());
