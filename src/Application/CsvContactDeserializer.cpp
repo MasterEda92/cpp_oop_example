@@ -1,8 +1,8 @@
-#include "Contact.h"
+#include "CsvContactDeserializer.h"
 #include <sstream>
 
-CContact::CContact(std::string strCsv) {
-  std::istringstream ss(strCsv);
+CContact CCsvContactDeserializer::Deserialize(const std::string &data) {
+  std::istringstream ss(data);
   std::string token;
 
   std::string strFirstName, strLastName, nAge;
@@ -23,15 +23,5 @@ CContact::CContact(std::string strCsv) {
     }
     ++nCounter;
   }
-  m_strFirstName = strFirstName;
-  m_strLastName = strLastName;
-  m_nAge = std::stoi(nAge);
-}
-
-std::string CContact::ToCsv() {
-  std::ostringstream oss;
-  oss << m_strFirstName << ";" << m_strLastName << ";"
-      << m_nAge; // << ";" << pContact->phone_nr;
-
-  return oss.str();
+  return CContact(strFirstName, strLastName, std::stoi(nAge));
 }
